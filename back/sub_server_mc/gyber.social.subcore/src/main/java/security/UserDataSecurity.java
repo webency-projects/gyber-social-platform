@@ -1,24 +1,59 @@
 package security;
 
+import java.security.MessageDigest;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
+import dao.Message;
+import dao.User;
 @Component
 public class UserDataSecurity {
-    @Bean(initMethod = "init", destroyMethod = "destroy")
+    /*
+     *  Надо  использовать аннотаций @PostConstruct и @PreDestroy
+     *  так как мы используем конфигурацию с помощюю  аннотаций  
+     */
+    // @Bean(initMethod = "init", destroyMethod = "destroy")     
 
-    public void init() {
+
+    private MessageDigest messageDigest;
+    private User userToChip;
+
+
+
+    public UserDataSecurity(){}
+
+    public UserDataSecurity(User user){
+        this.userToChip = user;
     }
 
-    public void destroy() {
+
+
+    @PostConstruct
+    public void initSecurityComponents() {
     }
 
-    public int hashSHA1(){
-        return 0;
+
+    @PreDestroy
+    public void destroySecurityComponents() {
     }
-    public int hashSHA256(){
-        return 0;
+
+    public boolean secureUserData(User user){
+        return false;
     }
-    public int hashAES256(){
-        return 0;
+
+
+    // Пока метод не продуман так как не знаем 
+    // какие данные шифровать а какие расшифровывать 
+    public boolean unsecureData(){
+        return false;
     }
+
+
+    // public int hashAES256(){
+    //     return 0;
+    // }
 }
