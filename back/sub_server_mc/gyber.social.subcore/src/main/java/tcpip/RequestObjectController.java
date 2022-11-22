@@ -18,7 +18,7 @@ import dao.User;
 import security.UserDataSecurity;
 
 @Controller
-// @RequestMapping ты здесь забыл указать адресс 
+
 @RequestMapping("/subservice")
 @ResponseBody
 public class RequestObjectController {
