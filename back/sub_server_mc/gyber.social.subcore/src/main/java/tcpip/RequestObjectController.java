@@ -30,9 +30,13 @@ public class RequestObjectController {
 
     @GetMapping("/auth")
     public ResponseEntity authUserAndReturnEntity(@RequestBody AuthDataUser authDataUser){
-       if(authDataUser == null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-       }
+        if(authDataUser == null){
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+            
+        }else if(authDataUser.getEmail().isEmpty() | authDataUser.getEmail() == null 
+                | authDataUser.getPassword().isEmpty() | authDataUser.getPassword() == null){
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         return ResponseEntity.ok().build();
     }
 
