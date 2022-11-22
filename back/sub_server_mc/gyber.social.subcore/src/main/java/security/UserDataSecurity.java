@@ -1,22 +1,24 @@
 package security;
 
+import java.security.Key;
 import java.security.MessageDigest;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.crypto.Cipher;
+
 import org.springframework.stereotype.Component;
 import dao.User;
 
 @Component
 public class UserDataSecurity {
-    /*
-     *  Надо  использовать аннотаций @PostConstruct и @PreDestroy
-     *  так как мы используем конфигурацию с помощюю  аннотаций  
-     */
-    // @Bean(initMethod = "init", destroyMethod = "destroy")     
+    private MessageDigest objectProvidingOneWayEncryption;
+    private Cipher objectProvidingTwoWayEncryption;
+    private Key encDecKey;
+    
 
 
-    private MessageDigest messageDigest;
+
     private User userToChip;
 
 
@@ -31,6 +33,15 @@ public class UserDataSecurity {
 
     @PostConstruct
     public void initSecurityComponents() {
+        try{
+            this.objectProvidingOneWayEncryption = MessageDigest.getInstance("SHA-512");
+            this.objectProvidingTwoWayEncryption = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -38,14 +49,14 @@ public class UserDataSecurity {
     public void destroySecurityComponents() {
     }
 
-    public boolean secureUserData(User user){
+    public boolean encryptUserData(User user){
         return false;
     }
 
 
     // Пока метод не продуман так как не знаем 
     // какие данные шифровать а какие расшифровывать 
-    public boolean unsecureData(){
+    public boolean decryptUserData(){
         return false;
     }
 
