@@ -1,7 +1,7 @@
 package tcpip;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +18,7 @@ import dao.User;
 import security.UserDataSecurity;
 
 @Controller
-// @RequestMapping ты здесь забыл указать адресс 
+
 @RequestMapping("/subservice")
 @ResponseBody
 public class RequestObjectController {
@@ -30,7 +30,13 @@ public class RequestObjectController {
 
     @GetMapping("/auth")
     public ResponseEntity authUserAndReturnEntity(@RequestBody AuthDataUser authDataUser){
-        // ...
+        if(authDataUser == null){
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+            
+        }else if(authDataUser.getEmail().isEmpty() | authDataUser.getEmail() == null 
+                | authDataUser.getPassword().isEmpty() | authDataUser.getPassword() == null){
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         return ResponseEntity.ok().build();
     }
 
@@ -54,6 +60,8 @@ public class RequestObjectController {
         // ...
         return ResponseEntity.ok().build();
     }
+
+
 
 
 

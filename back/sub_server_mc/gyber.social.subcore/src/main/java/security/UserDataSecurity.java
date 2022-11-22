@@ -4,12 +4,9 @@ import java.security.MessageDigest;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
-import dao.Message;
 import dao.User;
+
 @Component
 public class UserDataSecurity {
     /*
