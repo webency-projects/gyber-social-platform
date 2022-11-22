@@ -3,12 +3,6 @@ package dao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
-
-/*
- * Класс должен содержать второстепенную информацию 
- * о пользователе . Спрашиваешь у Gaber какие разделы 
- * будут в профиле , и реализуешь средствами Java 
- */
 public class UserData {
     private static long userCounter = 0;
     private long id;

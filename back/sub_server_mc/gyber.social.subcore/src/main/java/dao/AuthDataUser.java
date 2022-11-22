@@ -1,11 +1,5 @@
 package dao;
 
-
-/*
- * По тому же принципу что и все классы в пакете dao 
- * спрашиваешь Gyber по каким критериям нужно авторизовывать 
- * пользователя и реализуешь средствами Java . 
- */
 public class AuthDataUser {
     private String userName;
     private String lastName;

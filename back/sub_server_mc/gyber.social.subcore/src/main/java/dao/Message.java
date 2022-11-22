@@ -1,18 +1,5 @@
 package dao;
 
-/*
- * Этот класс допишешь , здесь нужны поля которые будут содержать следующие 
- * данные : 
- * 
- * основной текст сообщения , время отправки сообщения , 
- * зашифрованные данные пользователя адрессата сообщения , 
- * статус сообщения доставленно оно или нет , данные отправителя 
- * в частично  зашифрованом виде , . Это основное , далее 
- * напишешь Gyber и спросишь какие параметры еще надо указать в 
- * сообщений и реализуешь их средствами Java 
- * 
- */
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +9,7 @@ public class Message {
     private long senderId;
     private long receiverId;
     private String message;
-    private ArrayList<File> attachments;    //Списиок файлов для отправки, если есть
+    private ArrayList<File> attachments;
     private Date sentAt;
 
     public Message(long senderId, long receiverId, String message) {
